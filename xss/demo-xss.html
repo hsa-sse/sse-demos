@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Demo</title>
+</head>
+<body>
+    <h2>XSS Demonstration</h2>
+    
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const name = urlParams.get('name');
+
+        document.write("Hello " + name);
+    </script>
+
+    <!-- Disclaimer Section -->
+    <div style="margin-top:50px; border-top: 1px solid #ccc;">
+        <p><strong>Disclaimer:</strong> This example is intended for educational purposes only. No liability is assumed for any misuse of the information provided.</p>
+    </div>
+</body>
+</html>
