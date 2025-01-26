@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>XSS Demo</title>
+    <title>Reflected XSS Demo</title>
     <!-- Prism.js CSS für Syntax-Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
@@ -26,13 +26,13 @@
     </style>
 </head>
 <body>
-
+<h1>Reflected XSS Demo</h1><br>
 <script>
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const name = urlParams.get('name');
 
-    document.write("<h1>Hello " + name + "</h1>");
+    document.write("<h2>Hello " + name + "</h2>");
 </script>
 
 <!-- Code Container Section -->
@@ -44,7 +44,7 @@
     const urlParams = new URLSearchParams(queryString);
     const name = urlParams.get('name');
 
-    document.write("&lt;h1&gtHello " + name + "&lt;/h1&gt");
+    document.write("&lt;h2&gtHello " + name + "&lt;/h2&gt");
 &lt;/script&gt;
         </code></pre>
 </div>
