@@ -27,27 +27,27 @@
 </head>
 <body>
 <h1>DOM-based XSS Demo</h1><br>
-<script>
-    // Read fragment #
-    const hash = window.location.hash.substring(1); // Entfernt das '#' am Anfang
-    const urlParams = new URLSearchParams(hash);
-    const name = urlParams.get('name');
-
-    document.write("<h2>Hello " + name + "</h2>");
-</script>
+<div id="greeting"></div>
+<script src="script.js"></script>
 
 <!-- Code Container Section -->
 <div class="code-container">
-    <h3>Relevant Code:</h3>
+    <h3>Relevant Code (script.js):</h3>
     <pre class="code-box"><code class="language-javascript">
-&lt;script&gt;
+function updateGreeting() {
     const hash = window.location.hash.substring(1);
     const urlParams = new URLSearchParams(hash);
     const name = urlParams.get('name');
+    document.getElementById('greeting').innerHTML =
+        "&lt;h2&gtHello " + name + "&lt;/h2&gt";
+}
 
-    document.write("&lt;h2&gtHello " + name + "&lt;/h2&gt");
-&lt;/script&gt;
-        </code></pre>
+// Execute the function on page load
+window.onload = updateGreeting;
+
+// Execute the function on fragment change
+window.onhashchange = updateGreeting;
+    </code></pre>
 </div>
 
 <!-- Disclaimer Section -->
