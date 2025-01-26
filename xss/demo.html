@@ -38,8 +38,7 @@ function updateGreeting() {
     const hash = window.location.hash.substring(1);
     const urlParams = new URLSearchParams(hash);
     const name = urlParams.get('name');
-    document.getElementById('greeting').innerHTML =
-        "&lt;h2&gtHello " + name + "&lt;/h2&gt";
+    document.getElementById('greeting').innerHTML = "&lt;h2&gtHello " + name + "&lt;/h2&gt";
 }
 
 // Execute the function on page load
