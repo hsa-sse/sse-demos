@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reflected XSS Demo</title>
+    <title>DOM-based XSS Demo</title>
     <!-- Prism.js CSS für Syntax-Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
@@ -26,10 +26,11 @@
     </style>
 </head>
 <body>
-<h1>Reflected XSS Demo</h1><br>
+<h1>DOM-based XSS Demo</h1><br>
 <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    // Read fragment #
+    const hash = window.location.hash.substring(1); // Entfernt das '#' am Anfang
+    const urlParams = new URLSearchParams(hash);
     const name = urlParams.get('name');
 
     document.write("<h2>Hello " + name + "</h2>");
@@ -40,8 +41,8 @@
     <h3>Relevant Code:</h3>
     <pre class="code-box"><code class="language-javascript">
 &lt;script&gt;
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    const hash = window.location.hash.substring(1);
+    const urlParams = new URLSearchParams(hash);
     const name = urlParams.get('name');
 
     document.write("&lt;h2&gtHello " + name + "&lt;/h2&gt");
