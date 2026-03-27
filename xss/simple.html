@@ -11,9 +11,10 @@
     window.onhashchange = updateGreeting;
 
     function updateGreeting() {
-        const hash = window.location.hash.substring(1);
-        const urlParams = new URLSearchParams(hash);
-        const name = urlParams.get('name');
+        // Extract the 'name' parameter from the URL fragment
+        const name = new URLSearchParams(location.hash.slice(1)).get('name');
+
+        // Update the h2 element (with id greeting) with the extracted name
         document.getElementById('greeting').innerHTML = "Hello " + name;
     }
 </script>
