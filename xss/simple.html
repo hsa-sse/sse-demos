@@ -12,10 +12,10 @@
 
     function updateGreeting() {
         // Extract the 'name' parameter from the URL fragment
-        const name = new URLSearchParams(location.hash.slice(1)).get('name');
+        const value = new URLSearchParams(location.hash.slice(1)).get('name');
 
         // Update the h2 element (with id greeting) with the extracted name
-        document.getElementById('greeting').innerHTML = "Hello " + name;
+        document.getElementById('greeting').innerHTML = "Hello " + value;
     }
 </script>
 </body>
