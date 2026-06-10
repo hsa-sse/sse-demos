@@ -8,7 +8,6 @@
 .project
 
 # VS Code project files
-/.vscode
 
 # Build files
 /target
